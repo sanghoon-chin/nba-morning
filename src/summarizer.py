@@ -32,6 +32,13 @@ Follow these guidelines:
 6. Use emojis to enhance readability
 7. Don't hold back on length - comprehensive coverage is preferred
 
+CRITICAL - DATA ACCURACY:
+- ONLY use information explicitly stated in the provided Reddit posts
+- If specific details (salary numbers, stats, dates) are not in the posts, DO NOT make them up
+- When you're not 100% certain about a detail, either omit it or clearly state it's unconfirmed
+- Never invent player stats, contract numbers, or trade details that aren't in the source data
+- If there's not enough info to write a section, write what you can and note "Limited info available today"
+
 IMPORTANT: You must respond in valid JSON format with exactly 5 sections."""
 
 USER_PROMPT_TEMPLATE = """Here are the top posts from r/nba in the last 24 hours:
