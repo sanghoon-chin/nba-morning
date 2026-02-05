@@ -2,6 +2,7 @@
 텔레그램으로 메시지를 전송합니다.
 """
 
+import re
 import requests
 import time
 from typing import TYPE_CHECKING
@@ -18,6 +19,20 @@ MESSAGE_TITLES = {
     "fun_stuff": "🎯 HOOPS NERD TIME",
     "questions": "🤔 QUESTIONS TO PONDER",
 }
+
+
+def format_content(text: str) -> str:
+    """텔레그램용 포맷 후처리"""
+    # **text** → [text] 변환
+    text = re.sub(r'\*\*(.+?)\*\*', r'[\1]', text)
+
+    # [SUB HEADER] 앞에 빈 줄이 없으면 추가
+    text = re.sub(r'(?<!\n)\n(\[.+?\])', r'\n\n\1', text)
+
+    # 연속 빈 줄 3개 이상 → 2개로 정리
+    text = re.sub(r'\n{3,}', '\n\n', text)
+
+    return text.strip()
 
 
 def send_single_message(text: str, bot_token: str, chat_id: str) -> bool:
@@ -65,8 +80,10 @@ def send_digest(digest: "DigestSections", bot_token: str, chat_id: str) -> bool:
 
         title = MESSAGE_TITLES.get(key, "")
 
+        content = format_content(content)
+
         # 내용이 이미 제목으로 시작하면 제목 추가 안 함
-        if content.strip().startswith(title):
+        if content.startswith(title):
             message = content
         else:
             message = f"{title}\n\n{content}"

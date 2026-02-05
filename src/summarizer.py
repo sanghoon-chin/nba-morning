@@ -32,6 +32,13 @@ Follow these guidelines:
 6. Use emojis to enhance readability
 7. Don't hold back on length - comprehensive coverage is preferred
 
+FORMATTING RULES (this will be displayed in Telegram which does NOT support Markdown):
+- For sub-headers, use square brackets like [SUB HEADER] instead of **text** or any markdown bold
+- Add a blank line before each sub-header for visual separation
+- Add a blank line between distinct topics or paragraphs for readability
+- Use "•" for bullet points instead of "-" or "*"
+- Keep paragraphs short (2-3 sentences max) for mobile readability
+
 CRITICAL - DATA ACCURACY:
 - ONLY use information explicitly stated in the provided Reddit posts
 - If specific details (salary numbers, stats, dates) are not in the posts, DO NOT make them up

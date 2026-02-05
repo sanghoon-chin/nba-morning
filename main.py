@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 from src.rss_fetcher import fetch_nba_news, format_posts_for_summary
 from src.summarizer import summarize_news
 from src.telegram_bot import send_digest
-from src.history import save_digest
 
 
 def main():
@@ -41,12 +40,7 @@ def main():
     digest = summarize_news(posts_text, anthropic_key)
     print("   Summary generated!")
 
-    # 3. 히스토리 저장
-    print("💾 Saving to history...")
-    filepath = save_digest(digest, posts_count=len(posts))
-    print(f"   Saved: {filepath}")
-
-    # 4. 텔레그램으로 전송 (4개 메시지)
+    # 3. 텔레그램으로 전송 (4개 메시지)
     print("📱 Sending to Telegram (4 messages)...")
     success = send_digest(digest, telegram_token, telegram_chat_id)
 
