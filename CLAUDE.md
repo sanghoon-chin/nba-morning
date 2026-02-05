@@ -12,8 +12,6 @@
 ## 아키텍처
 ```
 [Reddit r/nba RSS] → [Claude API 요약] → [Telegram 전송]
-                           ↓
-                    [History 저장]
 ```
 
 ## 기술 스택
@@ -28,7 +26,6 @@
 - `src/rss_fetcher.py` - Reddit RSS 수집
 - `src/summarizer.py` - Claude API로 요약 (5개 섹션, JSON 응답)
 - `src/telegram_bot.py` - 텔레그램 전송 (5개 메시지)
-- `src/history.py` - 브리핑 히스토리 저장
 - `Makefile` - 로컬 실행 편의
 
 ## 브리핑 5개 섹션
@@ -52,7 +49,7 @@ make run      # 실행
 ```
 
 ## GitHub Actions
-- 매일 한국시간 오전 8시 자동 실행
+- 매일 한국시간 낮 12시 자동 실행 (UTC 03:00)
 - `.github/workflows/morning-briefing.yml`
 - Secrets 설정 필요: ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
 
